@@ -33,6 +33,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Eoá Soares Barbosa',
     image: '/eoa-soares-barbosa.png',
+    github: 'https://github.com/eloa66',
     initials: 'ES',
   },
   {
