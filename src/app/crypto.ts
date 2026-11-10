@@ -1,0 +1,5 @@
+﻿const PREFIX='enc:v1:';
+const SECRET='eduspace-demo-local-encryption-key-v1';
+async function cryptoKey(){const digest=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(SECRET));return crypto.subtle.importKey('raw',digest,{name:'AES-GCM'},false,['encrypt','decrypt'])}
+export async function encryptLocal(value:unknown){const key=await cryptoKey(),iv=crypto.getRandomValues(new Uint8Array(12)),plain=new TextEncoder().encode(JSON.stringify(value)),cipher=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,plain);const bytes=new Uint8Array(iv.length+cipher.byteLength);bytes.set(iv);bytes.set(new Uint8Array(cipher),iv.length);return PREFIX+btoa(String.fromCharCode(...bytes))}
+export async function decryptLocal<T>(value:string):Promise<T>{if(!value.startsWith(PREFIX))return JSON.parse(value) as T;const bytes=Uint8Array.from(atob(value.slice(PREFIX.length)),c=>c.charCodeAt(0)),iv=bytes.slice(0,12),cipher=bytes.slice(12),plain=await crypto.subtle.decrypt({name:'AES-GCM',iv},await cryptoKey(),cipher);return JSON.parse(new TextDecoder().decode(plain)) as T}
