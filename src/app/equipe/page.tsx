@@ -22,6 +22,7 @@ const teamMembers: TeamMember[] = [
   {
     name: 'Pedro Marques de Matos',
     image: '/pedro-marques-de-matos.png',
+    github: 'https://github.com/tapiuca',
     initials: 'PM',
   },
   {
