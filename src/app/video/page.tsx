@@ -16,7 +16,7 @@ export default function VideoPage() {
         <h1>Ver vídeo</h1>
         <div className="video-frame">
           <iframe
-            src="https://www.youtube.com/embed/vJqMFtxcTrI?si=1hrRmLsdCtSWFHL8"
+            src="https://www.youtube.com/embed/u1mOo_48acI?si=R2E8YJ_-nX9cjxzF"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
